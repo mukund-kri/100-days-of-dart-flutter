@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en"><head><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;perspective: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {border: 1px solid lightgray;display: inline-block;margin: -1px 8px;padding: 0 5px;pointer-events: auto;cursor: pointer;}.ace_inline_button:hover {border-color: gray;background: rgba(200,200,200,0.2);display: inline-block;pointer-events: auto;}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_mobile-menu {position: absolute;line-height: 1.5;border-radius: 4px;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;background: white;box-shadow: 1px 3px 2px grey;border: 1px solid #dcdcdc;color: black;}.ace_dark > .ace_mobile-menu {background: #333;color: #ccc;box-shadow: 1px 3px 2px grey;border: 1px solid #444;}.ace_mobile-button {padding: 2px;cursor: pointer;overflow: hidden;}.ace_mobile-button:hover {background-color: #eee;opacity:1;}.ace_mobile-button:active {background-color: #ddd;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+<link rel="stylesheet" media="all" href="Dart%20Track%20|%20Exercism_files/application-1554ec9af99e75a00f1d2fd6cf29c6f1dff015994dbfce4c.css">
+<link rel="preload" media="screen" href="Dart%20Track%20|%20Exercism_files/css.css" as="style">
+<link rel="preload" media="screen" href="Dart%20Track%20|%20Exercism_files/prism-line-numbers.css" as="style">
+<link rel="preload" media="screen" href="Dart%20Track%20|%20Exercism_files/prism-line-highlight.css" as="style">
+<link rel="preload" media="screen" href="Dart%20Track%20|%20Exercism_files/prism-okaidia.css" as="style" disabled="disabled" data-theme="dark">
+<link rel="preload" media="screen" href="Dart%20Track%20|%20Exercism_files/prism.css" as="style" data-theme="light">
+
+<title>Dart Track | Exercism</title>
+<meta content="Code Practice and Mentorship for Everyone. Level up your programming skills with 1,879 exercises across 38 languages, and insightful discussion with our dedicated team of welcoming mentors. Exercism is 100% free forever." name="description">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
+<!-- Twitter Card data -->
+<meta content="summary" name="twitter:card">
+<meta content="@exercism_io" name="twitter:site">
+<meta content="Dart Track | Exercism" name="twitter:title">
+<meta content="Code Practice and Mentorship for Everyone. Level up your programming skills with 1,879 exercises across 38 languages, and insightful discussion with our dedicated team of welcoming mentors. Exercism is 100% free forever." name="twitter:description">
+<meta content="@exercism_io" name="twitter:creator">
+<meta content="https://assets.exercism.io/social/general.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Dart Track | Exercism" property="og:title">
+<meta content="website" property="og:type">
+<meta content="https://exercism.io/my/tracks/dart" property="og:url">
+<meta content="https://assets.exercism.io/social/general.png" property="og:image">
+<meta content="Code Practice and Mentorship for Everyone. Level up your programming skills with 1,879 exercises across 38 languages, and insightful discussion with our dedicated team of welcoming mentors. Exercism is 100% free forever." property="og:description">
+<meta content="Exercism" property="og:site_name">
+<meta content="744760440" property="fb:admins">
+<!-- Favicon -->
+<link href="https://assets.exercism.io/assets/favicon/apple-touch-icon-57x57-fb4f6780a4b113ffe60214809ff3b4a7b7678fe53458d7385416afff8283170e.png" rel="apple-touch-icon-precomposed" sizes="57x57">
+<link href="https://assets.exercism.io/assets/favicon/apple-touch-icon-114x114-8d3516a30f134a564eb2578c96eae99e2c21bfe74bdac28e0945ed741f72b870.png" rel="apple-touch-icon-precomposed" sizes="114x114">
+<link href="https://assets.exercism.io/assets/favicon/apple-touch-icon-72x72-4ebeea76fc0ae80d3bb77a59752c5caf5d7debce078764ef95d6b69caa5e9c0b.png" rel="apple-touch-icon-precomposed" sizes="72x72">
+<link href="https://assets.exercism.io/assets/favicon/apple-touch-icon-144x144-2b3227f8282c3e7b4de1ef2d7f6b10e4105a3c6459fe1ffa2708d1ef21d8f58f.png" rel="apple-touch-icon-precomposed" sizes="144x144">
+<link href="https://assets.exercism.io/assets/favicon/apple-touch-icon-120x120-969d4edc6ae5d9a25e08aa7ed4f4b2cb51f72280c002921897fa5b55f638881f.png" rel="apple-touch-icon-precomposed" sizes="120x120">
+<link href="https://assets.exercism.io/assets/favicon/apple-touch-icon-152x152-60f1b255de144263788bc3567de33d96a7f2539922798f900ae9c3f70320b3b5.png" rel="apple-touch-icon-precomposed" sizes="152x152">
+<link href="https://assets.exercism.io/assets/favicon/favicon-32x32-4b88997131aa760497d619205b73dc82aa1d223447335a1436b73eb0ad95dff6.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://assets.exercism.io/assets/favicon/favicon-16x16-bc88c63d6b15688a0eabe1e7f977edb121e45ef4fc6a3699bc6bb970cf01fdea.png" rel="icon" sizes="16x16" type="image/png">
+<meta content="Exercism" name="application-name">
+<meta content="#009CAB" name="msapplication-TileColor">
+<meta content="https://assets.exercism.io/assets/favicon/mstile-144x144-2b3227f8282c3e7b4de1ef2d7f6b10e4105a3c6459fe1ffa2708d1ef21d8f58f.png" name="msapplication-TileImage">
+
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="A32yBVHkEmkqIMM6NPAbBdrWqM2CrSgF0ktNAc4V/7M6xAqCNDzAeUTCa6nBhxiW63z+iDdFcJe0Izx9JumiQA==">
+
+
+</head>
+<body class="namespace-my controller-tracks action-show user-signed_in">
+<!-- =render "layouts/announcement_bar" -->
+<header class="logged-in">
+<div class="lo-container">
+<div class="spacer">
+<a class="logo" href="https://exercism.io/"><img alt="Exercism" src="Dart%20Track%20|%20Exercism_files/logo-white-e3be059a4bfc4bf65f196a12105e9cff389b5a67f2065a086.png">
+</a></div>
+<a class="notifications" aria-label="No notifications" href="https://exercism.io/my/notifications"><i aria-hidden="true" class="far fa-bell"></i>
+</a><div class="misc-menu" tabindex="0">
+<div class="in-situ">
+<img alt="Avatar for mukund-kri" src="Dart%20Track%20|%20Exercism_files/1570533.png">
+<i aria-hidden="true" class="fas fa-caret-down"></i>
+</div>
+<div class="dropdown">
+<i aria-hidden="true" class="fas fa-caret-up"></i>
+<div class="person">
+Logged in as
+<strong>mukund-kri</strong>
+</div>
+<ul>
+<li><a href="https://exercism.io/my/tracks">Tracks</a></li>
+<li><a href="https://exercism.io/my/profile">Your profile</a></li>
+<li><a href="https://exercism.io/my/starred_solutions">Starred solutions</a></li>
+</ul>
+<ul>
+<li><a href="https://exercism.io/become-a-mentor">Become a mentor</a></li>
+</ul>
+
+<ul>
+<li><a href="https://teams.exercism.io/">Teams Edition</a></li>
+<li><a href="https://exercism.io/blog">Community Blog</a></li>
+</ul>
+<ul>
+<li><a href="https://exercism.io/my/settings">Settings</a></li>
+<li><a rel="nofollow" data-method="delete" href="https://exercism.io/users/sign_out">Sign out</a></li>
+</ul>
+</div>
+</div>
+</div>
+</header>
+
+<div id="my-track-page">
+<nav aria-label="Breadcrumb" class="breadcrumb"><ol class="lo-container"><li><a href="https://exercism.io/my/tracks">Language tracks</a></li>
+<li><a aria-current="page" class="current-link" href="https://exercism.io/my/tracks/dart">Dart Track</a></li>
+</ol></nav><div class="header">
+<div class="visual-section">
+<div class="line"></div>
+<div class="lo-container">
+<img alt="Track Dart" class="logo" onerror="this.onerror=null;this.src='https://assets.exercism.io/tracks/default-bordered-green.png'" src="Dart%20Track%20|%20Exercism_files/dart-bordered-green.png">
+<div class="status">
+Practice Mode
+</div>
+</div>
+</div>
+<div class="lo-container">
+<div class="title">
+<h1>Dart Track</h1>
+<div class="h1-subtitle">Joined on 5th May 2020</div>
+</div>
+<div class="stats">
+<div class="stat">37 Exercises</div>
+<div class="stat">7,649 Students</div>
+<div class="stat"><a href="https://exercism.io/tracks/dart/mentors">6 Mentors</a></div>
+<div class="stat"><a href="https://exercism.io/tracks/dart/maintainers">5 Maintainers</a></div>
+</div>
+</div>
+</div>
+<div class="independent-mode">
+<div class="side-exercises" id="side-exercises">
+<div class="lo-container">
+<div class="num-extra-exercises">37 Exercises</div>
+<div class="filters">
+<form class="side_exercises_form" action="/my/tracks/dart/side_exercises" accept-charset="UTF-8" data-remote="true" method="get">
+<div class="widget-filter difficulty">
+<div class="title">Difficulty:</div>
+<select name="difficulty" tabindex="-1" style="display: none;" class="selectized"><option value=" " selected="selected">All</option></select><div class="selectize-control single"><div class="selectize-input items full has-options has-items"><div class="item" data-value=" ">All</div><input type="select-one" autocomplete="off" tabindex="" style="width: 4px;"></div><div class="selectize-dropdown single" style="display: none;"><div class="selectize-dropdown-content"></div></div></div>
+</div>
+<!-- TODO Length -->
+<!-- .widget-filter.length -->
+<!-- .title Length: -->
+<!-- =select_tag :length, options_for_select({"All": 0, "Short": 1, "Medium": 2, "Long": 3}, value: @length), id: nil -->
+<div class="widget-filter topic">
+<div class="title">Topic:</div>
+<select name="topic_id" tabindex="-1" style="display: none;" class="selectized"><option value="0" selected="selected">Any</option></select><div class="selectize-control single"><div class="selectize-input items full has-options has-items"><div class="item" data-value="0">Any</div><input type="select-one" autocomplete="off" tabindex="" style="width: 4px;"></div><div class="selectize-dropdown single" style="display: none;"><div class="selectize-dropdown-content"></div></div></div>
+</div>
+<div class="widget-filter status">
+<div class="title">Status:</div>
+<select name="status" tabindex="-1" style="display: none;" class="selectized"><option value="0" selected="selected">All</option></select><div class="selectize-control single"><div class="selectize-input items full has-options has-items"><div class="item" data-value="0">All</div><input type="select-one" autocomplete="off" tabindex="" style="width: 4px;"></div><div class="selectize-dropdown single" style="display: none;"><div class="selectize-dropdown-content"></div></div></div>
+</div>
+</form>
+
+</div>
+<div class="pure-g exercises">
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise completed" href="https://exercism.io/my/solutions/876de4c041c840d0bd4ae03befb5a147"><div id="exercise-hello-world">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/hello-world-white.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Hello World</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">optional values</div>
+<div class="topic">strings</div>
+<div class="topic">text formatting</div>
+<div class="topic">conditionals</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise completed" href="https://exercism.io/my/solutions/ee701445ffb34c5bba609f7123ce6ec2"><div id="exercise-resistor-color">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/resistor-color-white.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Resistor Color</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">arrays</div>
+<div class="topic">strings</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise completed" href="https://exercism.io/my/solutions/818eb9ef10f6410c887d7f6e14902151"><div id="exercise-two-fer">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/two-fer-white.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Two Fer</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">conditionals</div>
+<div class="topic">optional values</div>
+<div class="topic">text formatting</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise completed" href="https://exercism.io/my/solutions/175f358a3e0340f0943ba36af43e91fd"><div id="exercise-resistor-color-duo">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/resistor-color-duo-white.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Resistor Color Duo</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">arrays</div>
+<div class="topic">strings</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise in-progress" href="https://exercism.io/my/solutions/f1ecb9c6331f496f9a687ebf1abaf92a"><div id="exercise-reverse-string">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/reverse-string-turquoise.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Reverse String</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">strings</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise in-progress" href="https://exercism.io/my/solutions/2134810a9d254afe828fe6aeab93e7da"><div id="exercise-leap">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/leap-turquoise.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Leap</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">booleans</div>
+<div class="topic">integers</div>
+<div class="topic">logic</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise in-progress" href="https://exercism.io/my/solutions/d459ca3608764e86989ddada0995ec3d"><div id="exercise-scrabble-score">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/scrabble-score-turquoise.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Scrabble Score</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">equality</div>
+<div class="topic">strings</div>
+<div class="topic">conditionals</div>
+<div class="topic">loops</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=beer-song&amp;track_id=dart"><div id="exercise-beer-song">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/beer-song-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Beer Song</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">loops</div>
+<div class="topic">strings</div>
+<div class="topic">text formatting</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=armstrong-numbers&amp;track_id=dart"><div id="exercise-armstrong-numbers">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/armstrong-numbers-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Armstrong Numbers</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">equality</div>
+<div class="topic">integers</div>
+<div class="topic">logic</div>
+<div class="topic">strings</div>
+<div class="topic">math</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=isogram&amp;track_id=dart"><div id="exercise-isogram">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/isogram-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Isogram</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">algorithms</div>
+<div class="topic">logic</div>
+<div class="topic">strings</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=difference-of-squares&amp;track_id=dart"><div id="exercise-difference-of-squares">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/difference-of-squares-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Difference Of Squares</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">integers</div>
+<div class="topic">math</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=word-count&amp;track_id=dart"><div id="exercise-word-count">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/word-count-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Word Count</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">lists</div>
+<div class="topic">maps</div>
+<div class="topic">regular expressions</div>
+<div class="topic">loops</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=bob&amp;track_id=dart"><div id="exercise-bob">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/bob-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Bob</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">pattern recognition</div>
+<div class="topic">polymorphism</div>
+<div class="topic">regular expressions</div>
+<div class="topic">strings</div>
+<div class="topic">conditionals</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=space-age&amp;track_id=dart"><div id="exercise-space-age">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/space-age-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Space Age</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">floating point numbers</div>
+<div class="topic">integers</div>
+<div class="topic">math</div>
+<div class="topic">polymorphism</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=hamming&amp;track_id=dart"><div id="exercise-hamming">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/hamming-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Hamming</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">equality</div>
+<div class="topic">strings</div>
+<div class="topic">conditionals</div>
+<div class="topic">loops</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=acronym&amp;track_id=dart"><div id="exercise-acronym">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/acronym-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Acronym</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">equality</div>
+<div class="topic">regular expressions</div>
+<div class="topic">strings</div>
+<div class="topic">conditionals</div>
+<div class="topic">loops</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=phone-number&amp;track_id=dart"><div id="exercise-phone-number">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/phone-number-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Phone Number</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">regular expressions</div>
+<div class="topic">conditionals</div>
+<div class="topic">loops</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=gigasecond&amp;track_id=dart"><div id="exercise-gigasecond">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/gigasecond-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Gigasecond</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">time</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=raindrops&amp;track_id=dart"><div id="exercise-raindrops">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/raindrops-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Raindrops</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">equality</div>
+<div class="topic">strings</div>
+<div class="topic">conditionals</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=rna-transcription&amp;track_id=dart"><div id="exercise-rna-transcription">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/rna-transcription-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">RNA Transcription</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">strings</div>
+<div class="topic">transforming</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=anagram&amp;track_id=dart"><div id="exercise-anagram">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/anagram-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Anagram</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">equality</div>
+<div class="topic">strings</div>
+<div class="topic">conditionals</div>
+<div class="topic">loops</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=prime-factors&amp;track_id=dart"><div id="exercise-prime-factors">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/prime-factors-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Prime Factors</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">arrays</div>
+<div class="topic">conditionals</div>
+<div class="topic">integers</div>
+<div class="topic">lists</div>
+<div class="topic">loops</div>
+<div class="topic">math</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=diamond&amp;track_id=dart"><div id="exercise-diamond">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/diamond-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Diamond</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">strings</div>
+<div class="topic">conditionals</div>
+<div class="topic">loops</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" href="https://exercism.io/my/solutions/658fc724c5184f739dc61e8778b9cc68"><div id="exercise-matching-brackets">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/matching-brackets-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Matching Brackets</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">pattern matching</div>
+<div class="topic">stacks</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=pascals-triangle&amp;track_id=dart"><div id="exercise-pascals-triangle">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/pascals-triangle-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Pascal's Triangle</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">integers</div>
+<div class="topic">lists</div>
+<div class="topic">math</div>
+<div class="topic">conditionals</div>
+<div class="topic">loops</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=darts&amp;track_id=dart"><div id="exercise-darts">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/darts-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Darts</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">math</div>
+<div class="topic">conditionals</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=pangram&amp;track_id=dart"><div id="exercise-pangram">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/pangram-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Pangram</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">pattern matching</div>
+<div class="topic">regular expressions</div>
+<div class="topic">sets</div>
+<div class="topic">strings</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=luhn&amp;track_id=dart"><div id="exercise-luhn">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/luhn-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Luhn</div>
+<div class="stats">
+<div class="difficulty medium">medium</div>
+</div>
+<div class="topics">
+<div class="topic">algorithms</div>
+<div class="topic">booleans</div>
+<div class="topic">loops</div>
+<div class="topic">strings</div>
+<div class="topic">type conversion</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=minesweeper&amp;track_id=dart"><div id="exercise-minesweeper">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/minesweeper-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Minesweeper</div>
+<div class="stats">
+<div class="difficulty medium">medium</div>
+</div>
+<div class="topics">
+<div class="topic">classes</div>
+<div class="topic">games</div>
+<div class="topic">lists</div>
+<div class="topic">logic</div>
+<div class="topic">loops</div>
+<div class="topic">math</div>
+<div class="topic">object oriented programming</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=isbn-verifier&amp;track_id=dart"><div id="exercise-isbn-verifier">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/isbn-verifier-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">ISBN Verifier</div>
+<div class="stats">
+<div class="difficulty medium">medium</div>
+</div>
+<div class="topics">
+<div class="topic">integers</div>
+<div class="topic">loops</div>
+<div class="topic">strings</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=collatz-conjecture&amp;track_id=dart"><div id="exercise-collatz-conjecture">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/collatz-conjecture-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Collatz Conjecture</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">exception handling</div>
+<div class="topic">loops</div>
+<div class="topic">math</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=binary-search-tree&amp;track_id=dart"><div id="exercise-binary-search-tree">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/binary-search-tree-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Binary Search Tree</div>
+<div class="stats">
+<div class="difficulty medium">medium</div>
+</div>
+<div class="topics">
+<div class="topic">algorithms</div>
+<div class="topic">classes</div>
+<div class="topic">generics</div>
+<div class="topic">inheritance</div>
+<div class="topic">logic</div>
+<div class="topic">object oriented programming</div>
+<div class="topic">searching</div>
+<div class="topic">sorting</div>
+<div class="topic">trees</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=nth-prime&amp;track_id=dart"><div id="exercise-nth-prime">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/nth-prime-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Nth Prime</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">algorithms</div>
+<div class="topic">integers</div>
+<div class="topic">math</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=allergies&amp;track_id=dart"><div id="exercise-allergies">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/allergies-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Allergies</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">arrays</div>
+<div class="topic">bitwise operations</div>
+<div class="topic">conditionals</div>
+<div class="topic">loops</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=triangle&amp;track_id=dart"><div id="exercise-triangle">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/triangle-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Triangle</div>
+<div class="stats">
+<div class="difficulty easy">easy</div>
+</div>
+<div class="topics">
+<div class="topic">conditionals</div>
+<div class="topic">loops</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=secret-handshake&amp;track_id=dart"><div id="exercise-secret-handshake">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/secret-handshake-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Secret Handshake</div>
+<div class="stats">
+<div class="difficulty medium">medium</div>
+</div>
+<div class="topics">
+<div class="topic">arrays</div>
+<div class="topic">bitwise operations</div>
+<div class="topic">integers</div>
+</div>
+</div>
+
+</a></div>
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+<a class="widget-side-exercise unlocked" rel="nofollow" data-method="post" href="https://exercism.io/my/solutions?exercise_id=robot-simulator&amp;track_id=dart"><div id="exercise-robot-simulator">
+<div class="icon">
+<div class="img" style="background-image:url('https://assets.exercism.io/exercises/robot-simulator-dark.png')"></div>
+</div>
+<i aria-label="lock status locked" class="fas fa-lock status locked" aria-hidden="true"></i>
+<i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked" aria-hidden="true"></i>
+<i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested" aria-hidden="true"></i>
+<i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress" aria-hidden="true"></i>
+<i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved" aria-hidden="true"></i>
+<div class="status completed">
+<i aria-label="check" class="fas fa-check" aria-hidden="true"></i>
+</div>
+<div class="title">Robot Simulator</div>
+<div class="stats">
+<div class="difficulty medium">medium</div>
+</div>
+<div class="topics">
+<div class="topic">classes</div>
+<div class="topic">enumerations</div>
+<div class="topic">logic</div>
+<div class="topic">loops</div>
+</div>
+</div>
+
+</a></div>
+
+</div>
+</div>
+</div>
+
+<div class="danger-zone">
+<div class="lo-container">
+<h3>Danger zone</h3>
+<a class="pure-button pause-track-btn" href="#">Pause track</a>
+<a class="pure-button leave-track-btn" href="#">Leave track</a>
+<a class="pure-button change-to-mentored-btn" href="#">Switch to Mentored Mode</a>
+</div>
+</div>
+</div>
+
+</div>
+
+<footer>
+<div class="lo-container">
+<div class="internal pure-g">
+<div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 pure-u-lg-1-6">
+<h4>Editions</h4>
+<ul>
+<li><a href="https://exercism.io/">Exercism</a></li>
+<li><a href="https://teams.exercism.io/">Exercism for Teams</a></li>
+<!-- %li=link_to "Exercism Research", "https://research.exercism.io" -->
+</ul>
+</div>
+<div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 pure-u-lg-1-6">
+<h4>About</h4>
+<ul>
+<li><a href="https://exercism.io/about">About Exercism</a></li>
+<li><a href="https://exercism.io/values">Our values</a></li>
+<li><a href="https://exercism.io/team">Our team</a></li>
+</ul>
+</div>
+<div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 pure-u-lg-1-6">
+<h4>Get involved</h4>
+<ul>
+<li><a href="https://exercism.io/contribute">Contribute</a></li>
+<li><a href="https://exercism.io/become-a-mentor">Become a mentor</a></li>
+<li><a href="https://exercism.io/become-a-maintainer">Become a maintainer</a></li>
+<li><a href="https://exercism.io/roadmap">Exercism's roadmap</a></li>
+</ul>
+</div>
+<div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 pure-u-lg-1-6">
+<h4>Legal &amp; Privacy</h4>
+<ul>
+<li><a href="https://exercism.io/terms-of-service">Terms of usage</a></li>
+<li><a href="https://exercism.io/privacy">Privacy policy</a></li>
+<li><a href="https://exercism.io/code-of-conduct">Code of conduct</a></li>
+</ul>
+</div>
+<div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 pure-u-lg-1-6">
+<h4>Keep in touch</h4>
+<ul>
+<li><a href="https://exercism.io/blog">Exercism's Blog</a></li>
+<!-- %li= link_to "Newsletter", "https://tinyletter.com/exercism", target: "_blank" -->
+<li><a target="_blank" href="https://github.com/exercism/exercism.io">Discuss on GitHub</a></li>
+<li><a href="https://exercism.io/contact">Contact us</a></li>
+<li><a href="https://exercism.io/report-abuse">Report abuse</a></li>
+</ul>
+</div>
+<div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 pure-u-lg-1-6">
+<h4>Get Help</h4>
+<ul>
+<li><a href="https://exercism.io/faqs">FAQs</a></li>
+<li><a href="https://exercism.io/getting-started">Getting started</a></li>
+<li><a href="https://exercism.io/cli">Installing the CLI</a></li>
+<li><a href="https://exercism.io/cli-walkthrough">Interactive CLI walkthrough</a></li>
+</ul>
+</div>
+</div>
+<div class="external">
+<ul>
+<li>
+<a class="icon" aria-label="Exercism on Twitter" href="https://twitter.com/exercism_io"><i aria-hidden="true" class="fab fa-fw fa-twitter"></i>
+</a></li>
+<li>
+<a class="icon" aria-label="Exercism on Facebook" href="https://facebook.com/exercism.io"><i aria-hidden="true" class="fab fa-fw fa-facebook-square"></i>
+</a></li>
+<li>
+<a class="icon" aria-label="Exercism on GitHub" href="https://github.com/exercism"><i aria-hidden="true" class="fab fa-fw fa-github"></i>
+</a></li>
+</ul>
+</div>
+<div class="legal">
+<div class="copyright">© 2020 Exercism</div>
+<div class="created-by">
+Exercism is an <a href="https://exercism.io/about">independent not-for-profit organisation</a>,
+run by a <a href="https://exercism.io/team/staff">small team</a>,
+and supported by <a href="https://exercism.io/team">1,814 wonderful volunteers</a>.
+</div>
+</div>
+</div>
+</footer>
+
+<div id="modal-wrapper">
+<div id="modal"></div>
+</div>
+
+<link rel="stylesheet" media="screen" href="Dart%20Track%20|%20Exercism_files/css.css"><link rel="stylesheet" media="screen" href="Dart%20Track%20|%20Exercism_files/prism-line-numbers.css"><link rel="stylesheet" media="screen" href="Dart%20Track%20|%20Exercism_files/prism-line-highlight.css"><link rel="stylesheet" media="screen" href="Dart%20Track%20|%20Exercism_files/prism-okaidia.css" disabled="disabled" data-theme="dark"><link rel="stylesheet" media="screen" href="Dart%20Track%20|%20Exercism_files/prism.css" data-theme="light">
+<script async="" src="Dart%20Track%20|%20Exercism_files/analytics.js"></script><script src="Dart%20Track%20|%20Exercism_files/application-2f1c90c345c130285a33.js"></script>
+<script src="Dart%20Track%20|%20Exercism_files/e26ac64253.js" crossorigin="anonymous"></script><link rel="stylesheet" href="Dart%20Track%20|%20Exercism_files/pro.css" media="all">
+<script src="Dart%20Track%20|%20Exercism_files/ace.js"></script>
+<script>
+  $('.topics .extra-button').click(function(e) {
+    e.preventDefault()
+    $(this).hide()
+    $('.topics .extra').show()
+  });
+  submitOnChange($('.side_exercises_form select'))
+</script>
+<script>
+  $('.leave-track-btn').click(function() {
+    showModal("leave-track", "<img alt=\"Track Dart\" onerror=\"this.onerror=null;this.src=&#39;https://assets.exercism.io/tracks/default-hex-green.png&#39;\" src=\"https://assets.exercism.io/tracks/dart-hex-green.png\" />\n<div class=\'main-section\'>\n<h2>Leave the Dart Track<\/h2>\n<p>\nLeaving this track will remove it from your list of tracks and\n<strong>permanently delete all your solutions.<\/strong>\nIf you would like to keep your solutions, please close this modal and choose the \"Pause Track\" option instead.\n<\/p>\n<p>Are you sure you want to continue?<\/p>\n<div class=\'buttons\'>\n<a class=\"pure-button action-button\" rel=\"nofollow\" data-method=\"delete\" href=\"/my/user_tracks/473738/leave\">Leave track<\/a>\n<a class=\"pure-button close-modal cancel-button\" href=\"#\">Cancel<\/a>\n<\/div>\n<\/div>\n")
+  })
+</script>
+<script>
+  $('.pause-track-btn').click(function() {
+    showModal("pause-track", "<img alt=\"Track Dart\" onerror=\"this.onerror=null;this.src=&#39;https://assets.exercism.io/tracks/default-hex-green.png&#39;\" src=\"https://assets.exercism.io/tracks/dart-hex-green.png\" />\n<div class=\'main-section\'>\n<h2>Pause the Dart Track<\/h2>\n<p>\nPausing this track will remove it from your list of tracks but will save your solutions in case you choose to unpause the track. If you would like to delete your solutions and start the track again, please close this modal and choose the \"Leave Track\" option instead.\n<\/p>\n<div class=\'buttons\'>\n<a class=\"pure-button action-button\" rel=\"nofollow\" data-method=\"patch\" href=\"/my/user_tracks/473738/pause\">Pause track<\/a>\n<a class=\"pure-button close-modal cancel-button\" href=\"#\">Cancel<\/a>\n<\/div>\n<\/div>\n")
+  })
+</script>
+<script>
+  $('.change-to-mentored-btn').click(function() {
+    showModal("change-to-mentored-mode", "<img alt=\"Track Dart\" onerror=\"this.onerror=null;this.src=&#39;https://assets.exercism.io/tracks/default-hex-green.png&#39;\" src=\"https://assets.exercism.io/tracks/dart-hex-green.png\" />\n<div class=\'main-section\'>\n<h2>Switch to Mentored Mode<\/h2>\n<h3>on the Dart track<\/h3>\n<p>In Mentored Mode you will receive mentor feedback on each solution. The track will also follow a structured route of progression. All your existing submissions on this Track will be saved but some exercises may become locked until you complete their prerequisite exercise.<\/p>\n<div class=\'buttons\'>\n<a class=\"pure-button action-button\" rel=\"nofollow\" data-method=\"patch\" href=\"/my/user_tracks/473738/set_mentored_mode\">Switch to Mentored Mode<\/a>\n<a class=\"pure-button close-modal cancel-button\" href=\"#\">Cancel<\/a>\n<\/div>\n<\/div>\n")
+  })
+</script>
+<script src="Dart%20Track%20|%20Exercism_files/prism-core.js"></script>
+<script src="Dart%20Track%20|%20Exercism_files/prism-line-numbers.js"></script>
+<script src="Dart%20Track%20|%20Exercism_files/prism-line-highlight.js"></script>
+<script src="Dart%20Track%20|%20Exercism_files/prism-autoloader.js" data-autoloader-path="//cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-47528450-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+</body></html>

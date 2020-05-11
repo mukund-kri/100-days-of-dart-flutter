@@ -1,6 +1,6 @@
 # Day 7 of 100
 
-## libs-exploaration
+## libs-exploration
 
 Today I started explore dart libs. I started with an easy on `yaml`. I'll hope
 to progress into more complex ones soon.

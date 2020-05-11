@@ -1,0 +1,14 @@
+
+# simple key value pairs
+one: First String
+
+# List of values
+two:
+  - first element
+  - second element
+  - third element
+
+
+three:
+  embeded:
+    key: Value

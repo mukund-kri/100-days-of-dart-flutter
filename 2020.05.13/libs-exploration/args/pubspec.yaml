@@ -1,0 +1,6 @@
+name: try_args
+description: Try the args package
+
+dependencies:
+  args: any
+

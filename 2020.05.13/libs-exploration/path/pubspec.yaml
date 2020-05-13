@@ -1,0 +1,6 @@
+name: try_path
+description: Try the path package
+
+dependencies:
+  path: any
+

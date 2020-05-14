@@ -1,0 +1,17 @@
+## Gradle related ignore files
+.gradle
+build
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Cache of project
+.gradletasknamecache
+
+
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+
+## OpenNLP binary models
+*.bin

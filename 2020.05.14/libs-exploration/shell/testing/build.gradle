@@ -1,0 +1,35 @@
+/**
+ * The gradle build file is a template with the following features ...
+ *
+ * 1. Java (1.8) is primary programming language
+ * 2. JUnit is the primary testing framework
+ * 3. Use jcenter to download libs
+ */
+
+plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+}
+
+
+dependencies {
+
+    // Put your dependencies here
+
+    // Use JUnit test framework
+    testCompile 'junit:junit:4.12'
+}
+
+task run(type: JavaExec) {
+    main = "org.learn.Main"
+    classpath = sourceSets.main.runtimeClasspath
+
+    // Command line args to be passed to main here
+    // args = ["$arg1"]
+}
+
+repositories {
+    // Use jcenter for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}

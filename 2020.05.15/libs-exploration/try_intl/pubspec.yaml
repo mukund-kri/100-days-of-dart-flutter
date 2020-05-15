@@ -1,0 +1,11 @@
+name: try_intl
+description: A simple command-line application.
+
+environment:
+  sdk: '>=2.7.0 <3.0.0'
+
+dependencies:
+  intl: 0.16.1
+
+dev_dependencies:
+  pedantic: ^1.8.0

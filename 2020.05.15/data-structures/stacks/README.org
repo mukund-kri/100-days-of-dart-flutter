@@ -1,0 +1,35 @@
+* The Stack Data Structure
+
+  The stack data structure is widely used. Here is wikipedia's page on
+  stacks ...
+  https://en.wikipedia.org/wiki/Stack_(abstract_data_type)
+
+  So a stack should implement ~push~ and ~pop~. Most of the time
+  ~peek~ is also implemented.
+
+** The stack data-structure in Dart
+
+   The Dart standard library does not have stack type, but the list
+   type already has all the methods to use a standard list as a
+   stack. 
+   Note: I don't consider the performance here. But, ListQueue class
+   of dart:collection claims to efficient usage as a stack.
+
+*** Methods
+    The methods in List are not called push, pop and peek. The
+    following table show the equivalent methods
+
+    | Stack method | eqivalent in Dart List |
+    |--------------+------------------------|
+    | push         | add                    |
+    | pop          | removeLast             |
+    | peak         | last                   |
+    
+*** Example
+    The code in ~main.dart~ is taken form the matching braces exercise
+    from exercism.io. This a classic example of how and when to use
+    stacks.
+
+    https://exercism.io/tracks/dart/exercises/matching-brackets
+
+   

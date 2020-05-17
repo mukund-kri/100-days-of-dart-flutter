@@ -1,0 +1,13 @@
+name: todo_reporter
+description: Holds the annotations for code generation
+version: 0.0.1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+
+dev_dependencies:
+  test: any
+
+  

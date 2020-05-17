@@ -1,0 +1,13 @@
+name: example
+version: 0.0.1
+description: Show how to use code generation
+
+dependencies:
+  todo_reporter:
+    path: ../todo_reporter/
+
+dev_dependencies:
+  build_runner: 1.0.0
+  todo_reporter_generator:
+    path: ../todo_reporter_generator/
+

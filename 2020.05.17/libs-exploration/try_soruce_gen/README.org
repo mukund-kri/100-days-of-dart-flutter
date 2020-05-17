@@ -1,0 +1,35 @@
+* Explore the source_gen package
+
+** What does source_gen do?
+   
+   The ~source_gen~ is a package that generates Dart code. I builds on
+   the ~analyzer~ and ~builder~ packages and provides a developer
+   friendly API on top of those two.
+
+   It is essentially two things ...
+   
+   - A framework for writing Builders that consume and produce Dart
+     code.
+   - A convention for human and tool generated Dart code to coexist
+     with clean separation, and for multiple code generators to
+     integrate in the same project.
+
+** Example project
+
+   There are many ways to structure code gen projects, I going to
+   follow the article below to get a firm grip on the concepts here;
+   There are many pieces to this and is hard to understand. Hopefully
+   after writing code for this project I'll be able to understand the
+   workings of 'Code generation with source_gen'
+   https://medium.com/flutter-community/part-2-code-generation-in-dart-annotations-source-gen-and-build-runner-bbceee28697b
+
+*** Project structure
+    This project has 3 packages ...
+    - todo_reporter :: Holds the annotation(s) 
+    - todo_reporter_generator :: Holds the actual code generation
+         code.
+    - example :: In this we used the generator to generate code.
+
+
+
+   

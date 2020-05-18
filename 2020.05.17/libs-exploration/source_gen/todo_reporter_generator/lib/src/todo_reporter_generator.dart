@@ -8,7 +8,7 @@ import 'package:todo_reporter/todo_reporter.dart';
 class TodoReporterGenerator extends GeneratorForAnnotation<Todo> {
   @override
   FutureOr<String> generateForAnnotatedElement(
-    Element element, ConstantReader annotation, BuildStep buildStep) {
-    return "// Hey! Annotation found";
-  };
+      Element element, ConstantReader annotation, BuildStep buildStep) {
+    return "// Hey! Annotation found!";
+  }
 }

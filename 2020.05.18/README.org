@@ -1,0 +1,14 @@
+* Day 14 / 100
+
+** Libs exploration
+   I spent a lot of time trying to get moor/moor-ffi to work on the
+   dart vm only (non flutter). It seems moor is tied to flutter and
+   running moor without flutter is beyond me. So I'm switching gears
+   and starting working with flutter
+
+** Flutter
+   Created a simple flutter project with a stateful widget that
+   increments a counter on tap gesture. 
+
+
+   

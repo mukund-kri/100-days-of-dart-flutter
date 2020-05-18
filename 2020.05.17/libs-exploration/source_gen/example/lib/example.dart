@@ -1,7 +1,7 @@
 import 'package:todo_reporter/todo_reporter.dart';
 
 
-part "todo.g.dart";
+part "example.g.dart";
 
 
 @Todo('Complete implementation of TestClass')

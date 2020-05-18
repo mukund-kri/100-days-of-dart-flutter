@@ -1,15 +1,22 @@
-targets:
-  $default:
-    builders:
-      todo_reporter_generator|todo_reporter:
-        enabled: true
-
 builders:
   todo_reporter:
+    # I need to look up the target property
     target: ":todo_reporter_generator"
+
+    # Library containing the builder
     import: "package:todo_reporter_generator/builder.dart"
+
+    # name of the function that gives us the builder
     builder_factories: ["todoReporter"]
+
+    # mapping from the source file extension to the generated file extension
     build_extensions: {".dart": [".todo_reporter.g.part"]}
+
+    # will also run on dependencies
     auto_apply: dependents
-    build_to: cache
+
+    # will generate a file directly into the package
+    build_to: source
+
+    # Dont know
     applies_builders: ["source_gen|combining_builder"]

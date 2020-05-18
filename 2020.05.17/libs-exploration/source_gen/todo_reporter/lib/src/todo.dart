@@ -5,5 +5,5 @@ class Todo {
   final String name;
   final String url;
 
-  const Todo(this.name, {url: this.url} : assert(name != null);
+  const Todo(this.name, {this.url}) : assert(name != null);
 }

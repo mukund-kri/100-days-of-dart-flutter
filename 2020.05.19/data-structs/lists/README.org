@@ -1,22 +1,87 @@
 * List in Dart
 
 Today I'm going to dive into lists in dart. This is a big topic due to
-the size of the API and because Lists are the most used data
+the size of the API and also because Lists are the most used data
 structure.
 
+Though there are many types of lists, I'm going to start of with
+~Growalble Lists~ as they are the most used and talk about the other
+kind of lists later.
 
 ** Common properties
+   A few properties that gets used a lot ...
+
+   #+BEGIN_SRC dart
+   var list = [1, 2, 3, 4];
+
+   // Get the length of list
+   list.length
+
+   // The first and last elements of list
+   list.first
+   list.last
+
+   // A iterable with the elements of this list reversed
+   list.reversed
+   
+   // Check if the list is empty
+   list.isEmpty
+   #+END_SRC
+
 
 ** Common methods
 
 *** add
+    Append elements the end of the list
+
+   #+BEGIN_SRC dart
+   var list = [1, 2, 3, 4];
+
+   // add 5 to the end of the list
+   list.add(5);
+
+   // adding multiple elements using the cascade (..) operator
+   list
+   ..add(6)
+   ..add(7);
+   #+END_SRC
+
 *** remove
+    Removes the first occurrence of an object in a list. 
+
+    If an instance of the object exist in the list then it will remove
+    the first occurrence and return ~true~. If the object
+    is not in the list it not modify the list and return ~false~
+
+    #+BEGIN_SRC dart
+    var list = [1, 2, 3, 4, 4, 5]
+    
+    // remove 4
+    list.remove(4)  // -> list is now [1, 2, 3, 4, 5] and returns true
+
+    // remove 8, which does not exist in the list
+    list.remove(8)  // -> list is still [1, 2, 3, 4, 5] and returns false
+    #+END_SRC
+
 
 ** Indexing
    In Dart indexing is basic. Let me explain in python we can have
    negative indexes (count from the end), slices and a lot more fun
    stuff. In Dart there is none of that, here your give an index
    position you get access to that position in the list.
+
+   #+BEGIN_SRC dart
+   var list = [1, 2, 3]
+   
+   // accessing elements
+   list[0]   // -> 1
+   list[10]  // throws RangeError
+
+   // Modifiying elements
+   list[0] = 15   // The value of list is now [15, 2, 3]
+   list[10] = 15  // also throws RangeError
+   #+END_SRC
+
 
 ** Functional operations
    The following list operations that come from a functional
@@ -26,6 +91,29 @@ structure.
    languages takes getting used to.
    
 *** map
+    In traditional functional programming languages a map takes in a
+    list and returns a new list. It also takes in a function, this
+    function is applied to each element of the input list and this
+    makes up the output list.
+
+    In Dart map is defined on the ~Iterable~ class and hence returns a
+    ~Iterable~ not a ~List~.
+
+    #+BEGIN_SRC dart
+    var list = [1, 2, 3];
+
+    // function that takes in an int and returns the double of that int
+    int double(int x) {
+      return 2 * x;
+    };
+    
+    list.map(double);  // -> return Iterable with elements (2, 4, 6)
+    
+    // Usually we use lamdas to write the same more compactly
+    list.map((x) => 2 * x);  // -> again returns Iterable with elements (2, 4, 6)
+    #+END_SRC
+
+    
 *** which
 *** fold
 *** reduce
@@ -38,11 +126,6 @@ structure.
      than lists. In the domains that Dart excels at browser, flutter
      etc. the need of raw speed is diminished, instead developer
      productivity is emphasised.
-
-     #+BEGIN_SRC dart
-     
-     void main() => print('hello world');
-     #+END_SRC
 
 ** Fixed Length lists
 

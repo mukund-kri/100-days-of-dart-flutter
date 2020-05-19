@@ -5,13 +5,15 @@ the size of the API and also because Lists are the most used data
 structure.
 
 Though there are many types of lists, I'm going to start of with
-~Growalble Lists~ as they are the most used and talk about the other
+~Growalble Lists~ as they are used the most, we'll talk about other
 kind of lists later.
 
 ** Common properties
    A few properties that gets used a lot ...
 
    #+BEGIN_SRC dart
+   // Make a new list. Note: dart has special syntax for list literals
+   // Dart is typed so this is a list of ints. 
    var list = [1, 2, 3, 4];
 
    // Get the length of list
@@ -49,9 +51,10 @@ kind of lists later.
 *** remove
     Removes the first occurrence of an object in a list. 
 
-    If an instance of the object exist in the list then it will remove
-    the first occurrence and return ~true~. If the object
-    is not in the list it not modify the list and return ~false~
+    - If an instance of the object exist in the list then it will remove
+      the first occurrence and return ~true~.
+    - If the object is not in the list, it will not modify the list and
+      ~false~ is returned.
 
     #+BEGIN_SRC dart
     var list = [1, 2, 3, 4, 4, 5]
@@ -65,7 +68,7 @@ kind of lists later.
 
 
 ** Indexing
-   In Dart indexing is basic. Let me explain in python we can have
+   In Dart indexing is basic. Let me explain; in python we can have
    negative indexes (count from the end), slices and a lot more fun
    stuff. In Dart there is none of that, here your give an index
    position you get access to that position in the list.

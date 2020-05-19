@@ -1,0 +1,6 @@
+targets:
+  $default:
+    builders:
+      todo_reporter_generator|todo_reporter:
+        generate_for:
+          - lib/*.dart

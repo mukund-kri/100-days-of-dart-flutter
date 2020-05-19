@@ -1,0 +1,22 @@
+* Switching from markdown to org-mode
+
+  I'm switching all newer documentation in the "100 days of Dart"
+  challenge from markdown to org-mode.
+
+** Why org-mode?
+   
+   1. I am more comfortable in org-mode than in markdown. Just because
+      I'v been using emacs for a long time now. And most of my
+      documentation is in org files.
+   2. github has full support for org-mode, just a much as markdown.
+   3. org-mode has much better support for list of lists
+   4. org-babel lets me execute code snippets inside of org document
+      to check the syntax.
+   5. Integrates with my TODO system which is org-agenda
+
+      and much more.
+
+** TODOs
+
+*** DONE convert all README.md in my templates to README.org
+*** DONE update my ~challenges~ utility

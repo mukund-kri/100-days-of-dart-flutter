@@ -1,0 +1,51 @@
+* List in Dart
+
+Today I'm going to dive into lists in dart. This is a big topic due to
+the size of the API and because Lists are the most used data
+structure.
+
+
+** Common properties
+
+** Common methods
+
+*** add
+*** remove
+
+** Indexing
+   In Dart indexing is basic. Let me explain in python we can have
+   negative indexes (count from the end), slices and a lot more fun
+   stuff. In Dart there is none of that, here your give an index
+   position you get access to that position in the list.
+
+** Functional operations
+   The following list operations that come from a functional
+   programming. In Dart they are implemented in the Iterable<T> class
+   which was a little disconcerting to me at first. Maping on a List
+   produces an Iterator and not another List like most programming
+   languages takes getting used to.
+   
+*** map
+*** which
+*** fold
+*** reduce
+*** forEach
+
+** Thoughts
+
+   - Dart does not have arrays only lists
+     Makes sense, arrays are very efficient but are hard(er) to use
+     than lists. In the domains that Dart excels at browser, flutter
+     etc. the need of raw speed is diminished, instead developer
+     productivity is emphasised.
+
+     #+BEGIN_SRC dart
+     
+     void main() => print('hello world');
+     #+END_SRC
+
+** Fixed Length lists
+
+
+** Growable lists
+

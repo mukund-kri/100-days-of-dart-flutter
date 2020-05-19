@@ -1,0 +1,20 @@
+* Setup dart with org-babel
+
+** setup ob-dart
+   
+   The ~ob-dart~ package provides dart language support to
+   org-babel. All I did was add the following to my init.el
+
+   #+BEGIN_SRC elisp
+   (use-package ob-dart)
+   (add-to-list 'org-babel-load-languages  '(dart . t))
+   #+END_SRC
+
+   The first line installs ~ob-dart~ from MELPA and the second
+   registers dart mode with org-babel.
+
+
+** TODOs
+
+*** TODO use the ~:config~ of use-package to load the language support to org-babel
+

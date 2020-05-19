@@ -1,0 +1,13 @@
+* Day 15 of 100
+
+** Today I ..
+
+*** Org-mode
+    
+    - configured dart for org-babel 
+    - switched all README's to org-mode
+
+*** Data structures
+
+    - did a deep dive into dart lists
+

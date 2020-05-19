@@ -87,11 +87,11 @@ kind of lists later.
 
 
 ** Functional operations
-   The following list operations that come from a functional
-   programming. In Dart they are implemented in the Iterable<T> class
-   which was a little disconcerting to me at first. Maping on a List
-   produces an Iterator and not another List like most programming
-   languages takes getting used to.
+   The following list operations come from a functional
+   programming. In Dart they are implemented in the Iterable<T> class.
+   So mapping on a List produces an Iterator and not a list, which is a
+   little disconcerting at first. It's different from other programming
+   languages and takes getting used to.
    
 *** map
     In traditional functional programming languages a map takes in a

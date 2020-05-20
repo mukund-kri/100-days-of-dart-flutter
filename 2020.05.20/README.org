@@ -1,0 +1,14 @@
+* Day 16 / 100
+
+** Libs Exploration
+
+*** Jinja
+    I have 2 ideas that I want to implement in Dart.
+
+    1. Static Blog Generator
+    2. Cookiecutter like tool
+
+    both of them need a templating engine and I prefer the Jinja like
+    syntax.
+
+*** Did a basic program with this lib

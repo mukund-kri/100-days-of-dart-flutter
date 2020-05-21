@@ -1,0 +1,52 @@
+* constructors
+
+** Aim
+   In this article I'm going to explore constructors in the Dart language. Turns
+   out the constructor semantics in Dart are far richer than any language I'v
+   encountered. Here goes ...
+
+   I'm going play with a made up example, a Configuration class that loads and
+   stores the configuration of an utility that help me do the "100 days of Dart"
+   challenge.
+
+** Plain classes   
+   Let's start of with Configuration class, with no (explicit) constructor.    
+
+** Simple Constructors
+   Since this article is on ~constructors~ you know what's coming next. Let's
+   make the code better with a simple constructor.
+
+   So what's a constructor? It's a specalized method which is automatically run
+   when an instance (object) of this class is created. We can do almost any
+   thing in this method (more on what we can't do later), but in this case we'll
+   just initialize the ~rootFolder~ and ~programmingLanguage~.
+
+
+   This assignments in the constructor looks kind of repetitive, fortunatly Dart
+   gives us some ~syntatic sugar~.
+
+   Note: If the parameter name is prefixed with ~this.~ it automatically set the
+   variable name <<clean up this sentence>>.
+
+   OK that's a little better. Let's use the concept of named parameters and
+   default values covered in the functions section to work this example into
+   declarative style used in flutter.
+
+** Named Constructors
+   Until now everything should have looked familiar to the C++/Java programmer,
+   from here the fun part starts. So we saw the ~default constructor~, but in
+   dart we can have any number of constructors with names. 
+
+   Let's saw we need to make a Configuration with data from a ~Map~, we would
+   call that constructor ~fromMap~ and here's how you would implement it.
+
+** Initializer List
+
+** Redirecting Constructor
+
+** Constant Constructor
+
+** Factory Constructors 
+
+
+

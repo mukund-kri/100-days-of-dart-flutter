@@ -1,16 +1,21 @@
-* TODO constructors
+* Constructors
 
 ** Aim
-   In this article I'm going to explore constructors in the Dart language. Turns
+   In this article we are going to explore constructors in the Dart language. Turns
    out the constructor semantics in Dart are far richer than any language I'v
    encountered. Here goes ...
 
+** Use Case
    I'm going play with a made up example, a Configuration class that loads and
-   stores the configuration of an utility that help me do the "100 days of Dart"
-   challenge.
+   stores the configuration of an utility that will help me do the "100 days of
+   Dart" challenge. It has two properties ...
+   
+   1. ~rootFolder~		:: Where all my code is.
+   2. ~programmingLanguage~	:: The programming language I'm working with.
 
 ** Plain classes   
    Let's start of with Configuration class, with no (explicit) constructor.    
+
    #+BEGIN_SRC dart
    class Configuration {
      String rootFolder;
@@ -38,7 +43,7 @@
 
    So what's a constructor? It's a specalized method which is automatically run
    when an instance (object) of this class is created. We can do almost any
-   thing in this method (more on what we can't do later), but in this case we'll
+   thing in this method (more on what we can't later), but in this case we'll
    just initialize the ~rootFolder~ and ~programmingLanguage~. 
 
    #+BEGIN_SRC dart
@@ -46,7 +51,7 @@
      String rootFolder;
      String programmingLanguage;
 
-     // Now setting of parameters is the done by the constructor
+     // In this case setting of parameters is the done by the constructor
      Configuration(String rootFolder, String programmingLanguage) {
        this.rootFolder = rootFolder;
        this.programmingLanguage = programmingLanguage;
@@ -54,7 +59,7 @@
    }
 
    void main() {
-     // create an configuration object
+     // Create a configuration object
      var config = Configuration(
        '/home/skywalker/100DaysOfDart',
        'Dart',
@@ -63,8 +68,8 @@
    #+END_SRC
 
 
-   This assignments in the constructor looks kind of repetitive, fortunatly Dart
-   gives us some ~syntatic sugar~. The example now looks like
+   The assignments in the constructor looks kind of repetitive, fortunatly Dart
+   gives us some ~syntatic sugar~. The example, now looks like
 
    #+BEGIN_SRC dart
    class Configuration {
@@ -116,11 +121,15 @@
 
 ** Named Constructors
    Until now everything should have looked familiar to the C++/Java programmer,
-   from here the fun part starts. So we saw the ~default constructor~, but in
+   from here the fun starts. So we saw the ~default constructor~, but in
    dart we can have any number of constructors with names. 
 
-   Let's saw we need to make a Configuration with data from a ~Map~, we would
-   call that constructor ~fromMap~ and here's how you would implement it.
+   Let's take the case where we need to make a Configuration with data from a
+   ~Map~, we would call that constructor ~fromMap~ and here's how you would
+   implement it.
+
+   **Caution** I'm totally ignoring error handling, to focus on the concepts at
+   hand. The code you write should have proper exception handling.
 
    #+BEGIN_SRC dart
    class Configuration {
@@ -135,10 +144,6 @@
        this.rootFolder = map['rootFolder'];
        this.programmingLanguage = map['programmingLanguage'];
      }
-
-     String toString() {
-       return 'rootFolder: $rootFolder, programmingLanguage: $programmingLanguage';
-     }
    }
 
    void main() {
@@ -152,12 +157,104 @@
    #+END_SRC
 
 ** Initializer List
+   In dart, before the body of the constructor we can initialize instance
+   variables. The syntax is as follows ...
+
+   #+BEGIN_SRC dart
+     Configuration.fromMap(Map<String, String> map)
+      : rootFolder = map['rootFlder'],
+        programmingLanguage = map['progprogrammingLanguage'],
+        workingDir = "$rootFolder/$programmingLanguage" {
+          // rest of the constructor here 
+     }
+   #+END_SRC
+
+   This does what the constructor in the previous example does, but with
+   initializers. The initalizers can also be computations on the parameters. Be
+   careful though, the initalizers do not have access to instance variables.
 
 ** Redirecting Constructor
 
+   This is fancy name for a constructor that just calls another constructor.
+
+   #+BEGIN_SRC dart
+   // Redirect to the default constructor
+   Configuration.defaultConfig()
+      : this(rootFolder: '/home/skywalker/100DaysOfCode');
+   #+END_SRC
+
 ** Constant Constructor
+   
+   Constant constructor are used to create ~const~ objects, which cannot be
+   changed.
+
+   #+BEGIN_SRC dart
+   class ImmutableConfiguration {
+     final String rootFolder;
+     final String programmingLanguage;
+
+     const ImmutableConfiguration(this.rootFolder, this.programmingLanguage);
+   }
+
+   void main() {
+     // You can't do this with non constant constructors
+     const config = ImmutableConfiguration('/home', 'dart');
+
+     // Throws an error. config is constant
+     config.rootFolder = '/home/skywalker'; 
+   }
+   #+END_SRC
 
 ** Factory Constructors 
 
+   This is an interesting one. Constructors don't return anything, they are just
+   automatically called while creating a instance. It's done internally by
+   Dart. But what if we wanted to control the instance creation? 
+
+   In Dart we can! with ~factory constructors~. Let's make our ~Configuration~ a
+   singleton[1]. You can read the full details in the wikipedia page given in
+   the reference, but a simple way to think of Singletons; there can be only one
+   object of class.
+
+   Here's how to make ~Singletons~ in dart ...
+   
+   #+BEGIN_SRC dart
+
+     class Configuration {
+       // The single instance is a static variable
+       // _ indidcates private variable
+       static final Configuration _instance = Configuration._make();
+
+       // private constructor
+       Configuration._make() {}
+
+       // Allways return the only instance of Configuration
+       factory Configuration() {
+	 return _instance;
+       }
+     }
+
+     int main() {
+       var conf1 = Configuration();
+       var conf2 = Configuration();
+
+       // Check if conf1 and conf2 are the same object
+       assert(conf1 == conf2);
+     }
+
+   #+END_SRC
+
+   Note the default constructor, it now explicitly returns an instance of
+   ~Configuration~. Also note the ~factory~ keyword. 
+
+   Waaait a minute what about all the other code in the ~Configuration~ class
+   go, you ask? 
+
+   Well here I just show the ~factory constructor~ usage. A full usable
+   Configuration class, which uses the above concept properly is on github
+   [here];
 
 
+** Reference 
+
+   [1] https://en.wikipedia.org/wiki/Singleton_pattern

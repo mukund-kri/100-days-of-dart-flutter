@@ -1,0 +1,7 @@
+* day 19 / 100
+
+** lists deep dive
+
+   I finished the deep dive into lists. The resulting readme looks more like an
+   article. I *might* publish it somewhere.
+

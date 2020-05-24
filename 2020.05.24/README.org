@@ -1,0 +1,7 @@
+* Day 20 of 100
+
+Switched gears and looked into the JavaScript side of dart. 
+
+Started with basic Dart program that runs on the browser.
+
+Next I started working through the angular-dart tutorial.

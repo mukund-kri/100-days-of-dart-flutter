@@ -1,0 +1,10 @@
+* Day 22 of 100
+
+** Inheritance 
+   In my script I used inheritance. Following DRY principal, I moved all
+   repeating code into a base class and inherited from it.
+
+** Exercism
+   Unsuccessfully worked on "Bob" problem. It's partially correct, I will fix it
+   tomorrow.
+

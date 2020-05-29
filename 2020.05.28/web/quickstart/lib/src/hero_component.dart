@@ -6,14 +6,9 @@ import 'hero.dart';
 
 @Component(
   selector: 'my-hero',
-  templateUrl: 'hero_component.html',
+  template: '<h1>Hero Component</h1>',
   directives: [coreDirectives, formDirectives],
 )
-class HeroComponent  implements OnInit {
-  @Input()
-  Hero hero;
-
-  void ngOnInit() {
-    print(hero);
-  }
+class HeroComponent {
+ 
 }

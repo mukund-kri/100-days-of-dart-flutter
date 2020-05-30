@@ -5,7 +5,7 @@ import 'package:angular_app/src/hero_service.dart';
 import 'package:angular_app/src/route_paths.dart';
 import 'package:angular_router/angular_router.dart';
 
-import 'hero_search.dart';
+import 'hero_search_component.dart';
 
 @Component(
   selector: 'my-dashboard',
@@ -28,5 +28,3 @@ class DashboardComponent implements OnInit {
 
   String heroUrl(int id) => RoutePaths.hero.toUrl(parameters: {'id': '$id'});
 }
-
-

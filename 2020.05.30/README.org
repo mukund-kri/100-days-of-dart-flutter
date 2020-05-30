@@ -1,0 +1,5 @@
+* Day 25 / 100
+  
+
+Finished the angular routing
+

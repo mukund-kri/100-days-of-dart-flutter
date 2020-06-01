@@ -1,0 +1,23 @@
+* Fullstack Heroes app
+
+  A toy fullstack app with 3 parts
+
+  1. Browser app with Angular Dart
+  2. Server side with aqueduct + postgresql
+  3. Flutter app for mobile
+
+** Not there
+   This is the *VERY BASIC* version. Rather than listing what's there, here's a
+   list of what's not there. Implicitly this is also a TODO list.
+
+   1. Any kind of tests
+   2. Auth
+   2. Proper error handling.
+   3. Dockerization (Maybe)
+   
+
+** Angular Dart [Done]
+
+** Server Side [Done]
+
+** Flutter [Not Started]

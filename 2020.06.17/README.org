@@ -1,0 +1,7 @@
+* Back after 2+ weeks
+  
+  Health problems for the past two week. Back to the Code challenge.
+  
+** Explore the ~uuid~ package
+   I picked a simple one to get back on track. Generate UUIDs with the ~uuid~
+   package.

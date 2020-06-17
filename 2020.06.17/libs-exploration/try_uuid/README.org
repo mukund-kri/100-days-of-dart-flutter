@@ -1,0 +1,18 @@
+* Explore the package ~uuid~
+  
+  ~uuid~ is a simple package for generating UUIDs.
+  
+  - Generated UUIDs are RFC4122 compliant 
+
+** How to run?
+   You can run this app with ...
+
+   #+BEGIN_SRC bash
+   dart bin/main.dart
+   #+END_SRC
+
+** What does it do?
+   It generates 3 UUIDs of types v1, v4 and v5 and prints them
+
+** References 
+   https://www.ietf.org/rfc/rfc4122.txt

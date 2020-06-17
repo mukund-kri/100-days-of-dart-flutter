@@ -3,7 +3,6 @@ description: A simple command-line application.
 
 environment:
   sdk: '>=2.7.0 <3.0.0'
-  flutter: '>=1.12.0 <2.0.0'
   
 dependencies:
   path: ^1.6.0

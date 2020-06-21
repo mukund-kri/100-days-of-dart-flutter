@@ -1,0 +1,5 @@
+* try_inherit
+
+
+** Question: Can the parent method access overridden value?
+   Answer: YES!

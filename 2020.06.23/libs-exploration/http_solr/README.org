@@ -1,0 +1,4 @@
+* http_solr
+
+** Intention 
+   Play with querying solr with Dart's http library.

@@ -1,0 +1,5 @@
+* try_http
+
+
+** Intention
+   This pretty much is copy 'n paste of code in README in ~http~ package.

@@ -1,0 +1,14 @@
+name: try_http
+description: Try out the http package
+version: 0.0.0
+
+environment:
+  sdk: '>=2.7.0 <3.0.0'
+
+dependencies:
+  http: any
+
+dev_dependencies:
+  pedantic: ^1.8.0
+
+publish_to: none

@@ -1,0 +1,16 @@
+* dart:core uri class
+
+** Why?
+   I am currently writing a library to interact with Solr. The interaction
+   mainly occurs via the http JSON API. I was constructing the URI with string
+   concatination, but the URI class looks to be a safer/easier way to construct
+   uri's.
+
+** Basics
+   Construct a few basic urls. And get a feel for the API.
+
+** Query Parameters
+   Use the uses case of Solr to explore query and query parameters.
+
+** TODO TODOs
+   
